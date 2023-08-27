@@ -47,7 +47,7 @@ function searchHandler() {
 loadData();
 
 // bind enter key with search button
-const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('searchText');
 
 searchInput.addEventListener("keyup", event => {
     // if enter(13) is triggered
