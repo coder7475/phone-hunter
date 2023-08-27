@@ -45,3 +45,14 @@ function searchHandler() {
 
 // call functions
 loadData();
+
+// bind enter key with search button
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener("keyup", event => {
+    // if enter(13) is triggered
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById('btn-search').click();
+    }
+})
