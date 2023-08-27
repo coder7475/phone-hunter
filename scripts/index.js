@@ -2,17 +2,19 @@
 const loadData = async (searchText='iphone') => {
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await response.json();
-
+    
     // console.log(data.data);
     displayPhone(data.data);
 }
 
 function displayPhone(data) {
     // console.log(data);
+    const fullData = data;
+    data = data.slice(0, 12);
     const container = document.getElementById('phone-container');
     container.innerHTML = "";
     data.forEach(element => {
-        console.log(element);
+        // console.log(element);
         const card = document.createElement('div');
         card.classList = "card bg-base-100 shadow-xl";
 
