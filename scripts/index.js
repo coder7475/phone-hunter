@@ -1,6 +1,6 @@
 // function declaration
-const loadData = async () => {
-    const response = await fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+const loadData = async (searchText='iphone') => {
+    const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await response.json();
 
     // console.log(data.data);
