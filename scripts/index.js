@@ -10,6 +10,7 @@ const loadData = async (searchText='iphone') => {
 function displayPhone(data) {
     // console.log(data);
     const container = document.getElementById('phone-container');
+    container.innerHTML = "";
     data.forEach(element => {
         console.log(element);
         const card = document.createElement('div');
@@ -30,6 +31,14 @@ function displayPhone(data) {
         container.appendChild(card);
     });
 
+
+
+}
+
+function searchHandler() {
+    const searchText = document.getElementById('searchText').value;
+
+    loadData(searchText);
 
 
 }
