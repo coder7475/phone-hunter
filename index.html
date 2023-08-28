@@ -33,13 +33,19 @@
                 <button class="btn btn-primary text-white" onclick="searchHandler()" id="btn-search">Search</button>
             </div>
         </section>
+        <!-- loading button  -->
+        <section>
+            <button class="btn btn-square mx-auto w-full bg-white hidden" id="loadingSpinner">
+                <span class="loading loading-spinner"></span>
+            </button>
+        </section>
         <!-- search Results -->
         <section id="phone-container" class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
 
         </section>
         <!-- show all -->
         <section class="flex justify-center items-center my-20">
-            <button class="btn btn-primary">Show All</button>
+            <button class="btn btn-primary hidden" id="btn-sa">Show All</button>
         </section>
     </main>
     <footer>
