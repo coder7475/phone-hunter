@@ -39,7 +39,7 @@ function displayPhone(data, isShowAll) {
           <p class="text-center mt-5">There are many variations of passages of available, but the majority have suffered</p>
           <h3 class="font-bold mt-2">$999</h3>
           <div class="card-actions justify-center mt-4">
-            <button class="btn btn-primary">Show Details</button>
+            <button class="btn btn-primary" onclick="showDetails('${element.slug}')">Show Details</button>
           </div>
         </div> 
         `;
@@ -66,10 +66,42 @@ const toggleLoadingSpinner = (isLoading) => {
         spinner.classList.add('hidden');
     }
 }
-
+// show all button function
 const showAll = () => {
     searchHandler(true);
 }
+// Modal data load function
+async function showDetails(id) {
+    // console.log(id);
+    const response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await response.json();
+    // console.log(data);
+    // show data in modal
+    showModal(data.data);
+}
+
+const showModal = (data) => {
+    console.log(data);
+    console.log(data.mainFeatures.storage);
+    // use daisyUI to call modal using id
+    my_modal.showModal()
+    // get the modal container
+    const modal = document.getElementById('modalBox');
+    modal.classList = "card  shadow-xl";
+    modal.innerHTML = `
+        <figure><img src="${data.image}" alt="phone"></figure>
+        <div class="card-body">
+            <h2 class="card-title text-5xl">${data.name}</h2>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            <p><span class="font-bold">Storage: </span >${data.mainFeatures.storage}</p>
+            <div class="modal-action">  
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    `;
+}
+
 // call functions
 loadData();
 

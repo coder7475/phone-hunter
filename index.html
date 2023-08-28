@@ -20,7 +20,7 @@
                 <a class="btn btn-ghost normal-case text-[#403F3F] font-bold text-2xl">Hot Gadgets</a>
             </div>
             <div class="navbar-end">
-                <a class="btn btn-primary bg-[#0D6EFD] text-white">Sign Up</a>
+                <a class="btn btn-primary">Sign Up</a>
             </div>
         </div>
     </header>
@@ -29,7 +29,7 @@
             <h2 class="text-4xl font-semibold">Search Your Phone</h2>
             <div>
                 <input type="text" placeholder="Search Your Phone" id="searchText"
-                    class="bg-gray-100 p-3 rounded-lg input input-bordered" size="40">
+                    class="bg-gray-100 p-3 rounded-lg input input-bordered">
                 <button class="btn btn-primary text-white" onclick="searchHandler()" id="btn-search">Search</button>
             </div>
         </section>
@@ -46,6 +46,17 @@
         <!-- show all -->
         <section class="flex justify-center items-center my-20">
             <button class="btn btn-primary hidden" id="btn-sa" onclick="showAll()">Show All</button>
+        </section>
+
+        <!-- modal dialouge -->
+        <section>
+            <!-- Open the modal using ID.showModal() method -->
+            <dialog id="my_modal" class="modal">
+                <form method="dialog" class="modal-box">
+                    <div id="modalBox"></div>
+                    
+                </form>
+            </dialog>
         </section>
     </main>
     <footer>
