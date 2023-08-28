@@ -1,22 +1,24 @@
 // function declaration
-const loadData = async (searchText='iphone') => {
+const loadData = async (searchText='iphone', isShowAll) => {
     const response = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await response.json();
     
     // console.log(data.data);
-    displayPhone(data.data);
+    displayPhone(data.data, isShowAll);
 }
 
-function displayPhone(data) {
+function displayPhone(data, isShowAll) {
     // console.log(data);
     const fullData = data;
-    data = data.slice(0, 12);
+    if (!isShowAll){
+        data = data.slice(0, 12);
+    }
     // get the container
     const container = document.getElementById('phone-container');
     // clear the field
     container.innerHTML = "";
     // show all button is visible if search result is more than 12
-    if (fullData.length > 12) {
+    if (fullData.length > 12 && !isShowAll) {
         document.getElementById('btn-sa').classList.remove('hidden');
     }
     else {
@@ -49,10 +51,10 @@ function displayPhone(data) {
 
 }
 
-function searchHandler() {
+function searchHandler(isShowAll) {
     toggleLoadingSpinner(true);
     const searchText = document.getElementById('searchText').value;
-    loadData(searchText);
+    loadData(searchText, isShowAll);
     toggleLoadingSpinner(false);
 }
 
@@ -65,6 +67,9 @@ const toggleLoadingSpinner = (isLoading) => {
     }
 }
 
+const showAll = () => {
+    searchHandler(true);
+}
 // call functions
 loadData();
 
