@@ -22,6 +22,8 @@ function displayPhone(data) {
     else {
         document.getElementById('btn-sa').classList.add('hidden');
     }
+
+
     // display cards
     data.forEach(element => {
         // console.log(element);
@@ -48,11 +50,19 @@ function displayPhone(data) {
 }
 
 function searchHandler() {
+    toggleLoadingSpinner(true);
     const searchText = document.getElementById('searchText').value;
-
     loadData(searchText);
+    toggleLoadingSpinner(false);
+}
 
-
+const toggleLoadingSpinner = (isLoading) => {
+    const spinner = document.getElementById('loadingSpinner');
+    if (isLoading) {
+        spinner.classList.remove('hidden');
+    } else {
+        spinner.classList.add('hidden');
+    }
 }
 
 // call functions
